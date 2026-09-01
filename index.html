@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tienda Motraza</title>
+<meta name="description" content="Tu rodada impresa en relieve, el parche de tu club bordado y tu carnet de rider en físico. Todavía no está a la venta: esto es la lista de espera.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Tienda Motraza">
+<meta property="og:description" content="La carretera que hiciste, en relieve y sobre tu estantería.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Barlow:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --negro:#08090a;
+  --carbon:#111315;
+  --carbon-2:#171a1d;
+  --carbon-3:#1e2226;
+  --linea:#25292e;
+  --linea-viva:#343a41;
+  --hueso:#f1efec;
+  --gris:#9ea5ab;
+  --gris-2:#6d747b;
+  --naranja:#ff6600;
+  --naranja-claro:#ff9040;
+  --verde:#4fbf7f;
+  --rojo:#ff6b5e;
+  --paso:clamp(3rem,8vw,5.5rem);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+body{
+  margin:0;background:var(--negro);color:var(--hueso);
+  font-family:Barlow,system-ui,-apple-system,"Segoe UI",sans-serif;
+  font-size:17px;line-height:1.62;-webkit-font-smoothing:antialiased;
+}
+.envoltura{max-width:68rem;margin:0 auto;padding:0 clamp(1.1rem,4vw,2.5rem)}
+img{max-width:100%;display:block}
+
+/* ---------- barra ---------- */
+header{
+  border-bottom:1px solid var(--linea);position:sticky;top:0;z-index:20;
+  background:rgba(8,9,10,.9);backdrop-filter:blur(10px);
+}
+.barra{display:flex;align-items:center;gap:1rem;padding:.9rem 0}
+.marca{font-family:Archivo,sans-serif;font-weight:800;font-size:1.1rem;letter-spacing:.03em;text-decoration:none;color:var(--hueso)}
+.marca i{font-style:normal;color:var(--naranja)}
+.barra nav{margin-left:auto;display:flex;gap:1.3rem;align-items:center}
+.barra nav a{
+  font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gris);text-decoration:none;
+}
+.barra nav a:hover,.barra nav a:focus-visible{color:var(--hueso)}
+.barra nav a.destaca{color:var(--naranja);border:1px solid var(--naranja);padding:.35rem .7rem;border-radius:4px}
+.barra nav a.destaca:hover{background:var(--naranja);color:var(--negro)}
+@media (max-width:34rem){.barra nav a:not(.destaca){display:none}}
+
+/* ---------- portada ---------- */
+.portada{padding:var(--paso) 0 clamp(2rem,5vw,3.5rem);display:grid;gap:clamp(2rem,5vw,3.5rem);align-items:center}
+@media (min-width:52rem){.portada{grid-template-columns:1.05fr .95fr}}
+.insignia{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-family:"IBM Plex Mono",monospace;font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--naranja);border:1px solid var(--naranja);padding:.32rem .65rem;border-radius:4px;margin-bottom:1.5rem;
+}
+.insignia::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--naranja)}
+h1{
+  font-family:Archivo,sans-serif;font-weight:800;font-size:clamp(2.5rem,7.5vw,4.4rem);
+  line-height:.99;letter-spacing:-.032em;margin:0 0 1.2rem;text-wrap:balance;
+}
+h1 em{font-style:normal;color:var(--naranja)}
+.entradilla{font-size:clamp(1.05rem,2.2vw,1.24rem);color:var(--gris);max-width:32rem;margin:0 0 1.9rem}
+.entradilla strong{color:var(--hueso);font-weight:600}
+.portada-acciones{display:flex;flex-wrap:wrap;gap:.7rem}
+.boton{
+  display:inline-block;text-decoration:none;font-family:Archivo,sans-serif;font-weight:700;
+  font-size:.98rem;padding:.85rem 1.5rem;border-radius:7px;border:1px solid transparent;cursor:pointer;
+}
+.boton.solido{background:var(--naranja);color:#08090a}
+.boton.solido:hover{background:var(--naranja-claro)}
+.boton.hueco{border-color:var(--linea-viva);color:var(--hueso);background:transparent}
+.boton.hueco:hover{border-color:var(--hueso)}
+.lamina-portada{
+  border-radius:14px;overflow:hidden;border:1px solid var(--linea);
+  background:var(--carbon);position:relative;box-shadow:0 24px 60px -30px #000;
+}
+.lamina-portada img{width:100%;aspect-ratio:1;object-fit:cover}
+.pie-lamina{
+  position:absolute;left:0;right:0;bottom:0;padding:.85rem 1rem;
+  background:linear-gradient(transparent,rgba(8,9,10,.92) 55%);
+  font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.08em;color:var(--gris);
+  text-transform:uppercase;
+}
+
+/* ---------- secciones ---------- */
+section{padding:var(--paso) 0;border-top:1px solid var(--linea)}
+.rotulo-seccion{
+  font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--naranja);margin:0 0 .8rem;
+}
+h2{
+  font-family:Archivo,sans-serif;font-weight:700;font-size:clamp(1.7rem,4vw,2.5rem);
+  letter-spacing:-.022em;line-height:1.08;margin:0 0 .9rem;text-wrap:balance;
+}
+.intro-seccion{color:var(--gris);max-width:38rem;margin:0 0 2.4rem;font-size:1.04rem}
+
+/* ---------- productos ---------- */
+.rejilla{display:grid;gap:1.1rem}
+@media (min-width:44rem){.rejilla{grid-template-columns:repeat(3,1fr)}}
+.producto{
+  background:var(--carbon);border:1px solid var(--linea);border-radius:12px;overflow:hidden;
+  display:flex;flex-direction:column;
+}
+.producto.destacado{border-color:var(--naranja)}
+@media (min-width:44rem){.producto.destacado{grid-column:span 3;flex-direction:row}}
+.lamina{background:var(--carbon-2);position:relative;overflow:hidden}
+.lamina img,.lamina svg{width:100%;height:100%;object-fit:cover;aspect-ratio:4/3;display:block}
+.producto.destacado .lamina{flex:0 0 44%}
+@media (min-width:44rem){.producto.destacado .lamina img{aspect-ratio:auto;height:100%;min-height:22rem}}
+.etiquetas{position:absolute;top:.7rem;left:.7rem;display:flex;gap:.35rem;flex-wrap:wrap}
+.etq{
+  font-family:"IBM Plex Mono",monospace;font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;
+  padding:.24rem .5rem;border-radius:3px;background:rgba(8,9,10,.82);color:var(--gris);border:1px solid var(--linea-viva);
+  backdrop-filter:blur(4px);
+}
+.etq.nuevo{color:var(--naranja);border-color:var(--naranja)}
+.cuerpo{padding:1.4rem;display:flex;flex-direction:column;gap:.8rem;flex:1}
+.producto h3{font-family:Archivo,sans-serif;font-weight:700;font-size:1.35rem;letter-spacing:-.015em;margin:0;line-height:1.15}
+.producto.destacado h3{font-size:clamp(1.6rem,3.2vw,2.1rem)}
+.producto p{margin:0;color:var(--gris);font-size:.98rem}
+.fichas{display:flex;flex-wrap:wrap;gap:.35rem;margin-top:auto;padding-top:.5rem}
+.ficha{
+  font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--gris-2);border:1px solid var(--linea-viva);border-radius:3px;padding:.2rem .45rem;
+}
+.precio{display:flex;align-items:baseline;gap:.55rem;border-top:1px solid var(--linea);padding-top:1rem;margin-top:.3rem}
+.precio b{font-family:Archivo,sans-serif;font-size:1.75rem;font-weight:800;color:var(--hueso);font-variant-numeric:tabular-nums;line-height:1}
+.precio span{font-family:"IBM Plex Mono",monospace;font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;color:var(--gris-2)}
+.btn-producto{
+  appearance:none;border:1px solid var(--naranja);background:transparent;color:var(--naranja);
+  font-family:Archivo,sans-serif;font-weight:700;font-size:.95rem;
+  padding:.75rem 1rem;border-radius:7px;cursor:pointer;width:100%;
+}
+.btn-producto:hover,.btn-producto:focus-visible{background:var(--naranja);color:var(--negro)}
+.producto.destacado .btn-producto{width:auto;padding-left:2rem;padding-right:2rem;align-self:flex-start}
+
+/* ---------- pasos ---------- */
+.pasos{display:grid;gap:1.6rem;counter-reset:paso}
+@media (min-width:44rem){.pasos{grid-template-columns:repeat(3,1fr);gap:2rem}}
+.paso{padding-top:1.1rem;border-top:2px solid var(--linea-viva)}
+.paso::before{
+  counter-increment:paso;content:"0" counter(paso);
+  display:block;font-family:"IBM Plex Mono",monospace;font-size:.72rem;letter-spacing:.12em;
+  color:var(--naranja);margin-bottom:.6rem;
+}
+.paso h3{font-family:Archivo,sans-serif;font-weight:600;font-size:1.12rem;margin:0 0 .45rem;letter-spacing:-.01em}
+.paso p{margin:0;color:var(--gris);font-size:.96rem}
+
+/* ---------- formas ---------- */
+.formas{display:grid;gap:1rem}
+@media (min-width:38rem){.formas{grid-template-columns:repeat(3,1fr)}}
+.forma{
+  border:1px solid var(--linea);border-radius:10px;padding:1.2rem;background:var(--carbon);
+  display:flex;flex-direction:column;gap:.6rem;align-items:flex-start;
+}
+.forma svg{width:100%;height:auto;max-width:7rem;margin:0 auto}
+.forma h3{font-family:Archivo,sans-serif;font-weight:600;font-size:1rem;margin:.4rem 0 0}
+.forma p{margin:0;color:var(--gris);font-size:.9rem}
+
+/* ---------- cajas honestas ---------- */
+.honesto{display:grid;gap:1.5rem}
+@media (min-width:44rem){.honesto{grid-template-columns:repeat(3,1fr);gap:2rem}}
+.honesto h3{font-family:Archivo,sans-serif;font-weight:600;font-size:1.05rem;margin:0 0 .4rem}
+.honesto p{margin:0;color:var(--gris);font-size:.95rem}
+.honesto>div{border-left:2px solid var(--naranja);padding-left:1rem}
+
+/* ---------- formulario ---------- */
+form{display:flex;flex-direction:column;gap:1.25rem;max-width:35rem}
+fieldset{border:0;margin:0;padding:0;display:flex;flex-direction:column;gap:.55rem}
+legend,.etiqueta{
+  font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gris-2);padding:0;
+}
+.etiqueta .suave{text-transform:none;letter-spacing:0;color:var(--gris-2)}
+.opciones{display:grid;gap:.5rem}
+.opcion{
+  display:flex;align-items:center;gap:.65rem;border:1px solid var(--linea);border-radius:8px;
+  padding:.8rem .9rem;cursor:pointer;background:var(--carbon);
+}
+.opcion:hover{border-color:var(--linea-viva)}
+.opcion:has(input:checked){border-color:var(--naranja);background:rgba(255,102,0,.07)}
+.opcion:has(input:focus-visible){outline:2px solid var(--naranja);outline-offset:2px}
+.opcion input{accent-color:var(--naranja);width:1.05rem;height:1.05rem;flex:none;margin:0}
+.opcion span{font-weight:500;font-size:.97rem}
+input[type=text],input[type=email],textarea{
+  width:100%;background:var(--carbon);border:1px solid var(--linea);border-radius:8px;
+  color:var(--hueso);font-family:inherit;font-size:1rem;padding:.75rem .85rem;
+}
+input:focus,textarea:focus{outline:2px solid var(--naranja);outline-offset:1px;border-color:var(--naranja)}
+input::placeholder,textarea::placeholder{color:var(--gris-2)}
+#codigo{font-family:"IBM Plex Mono",monospace;letter-spacing:.22em;text-transform:uppercase}
+textarea{resize:vertical;min-height:4.5rem}
+.pista{font-size:.86rem;color:var(--gris-2);margin:0}
+.trampa{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+button[type=submit]{
+  appearance:none;border:0;background:var(--naranja);color:#08090a;
+  font-family:Archivo,sans-serif;font-weight:800;font-size:1.05rem;
+  padding:1rem 1.5rem;border-radius:8px;cursor:pointer;
+}
+button[type=submit]:hover:not(:disabled){background:var(--naranja-claro)}
+button[type=submit]:disabled{opacity:.5;cursor:default}
+button:focus-visible,a:focus-visible{outline:2px solid var(--naranja);outline-offset:2px}
+.recado{margin:0;font-size:.96rem;padding:.8rem .95rem;border-radius:8px;border:1px solid}
+.recado[data-tipo=ok]{color:var(--verde);border-color:var(--verde);background:rgba(79,191,127,.08)}
+.recado[data-tipo=error]{color:var(--rojo);border-color:var(--rojo);background:rgba(255,107,94,.08)}
+.recado[hidden]{display:none}
+.oculto{display:none}
+.ruta-elegida{
+  font-family:"IBM Plex Mono",monospace;font-size:.8rem;color:var(--gris);
+  border:1px dashed var(--linea-viva);border-radius:8px;padding:.7rem .85rem;
+}
+.ruta-elegida b{color:var(--naranja);font-weight:500}
+
+/* ---------- pie ---------- */
+footer{border-top:1px solid var(--linea);padding:var(--paso) 0 4rem;color:var(--gris-2);font-size:.9rem}
+footer h3{font-family:"IBM Plex Mono",monospace;font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--gris);margin:0 0 .5rem;font-weight:500}
+footer p{margin:0 0 1rem;max-width:46rem}
+footer strong{color:var(--gris)}
+.rellenar{background:rgba(255,102,0,.16);border-bottom:1px dashed var(--naranja);padding:0 .2rem;color:var(--hueso)}
+.legal{display:grid;gap:2rem}
+@media (min-width:44rem){.legal{grid-template-columns:1fr 1fr}}
+a{color:var(--naranja)}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="envoltura barra">
+    <a class="marca" href="#">MOTRAZA<i>.</i></a>
+    <nav>
+      <a href="#productos">Productos</a>
+      <a href="#como">Cómo se hace</a>
+      <a class="destaca" href="#reservar">Apuntarme</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+<div class="envoltura">
+
+  <section class="portada" style="border-top:0">
+    <div>
+      <span class="insignia">Todavía no está a la venta</span>
+      <h1>La carretera que hiciste, <em>encima de tu estantería</em></h1>
+      <p class="entradilla">Tu rodada impresa en relieve —con sus montañas, sus valles y tu
+      trazado marcado—, el parche de tu club bordado de verdad y tu carnet de rider en la mano.
+      <strong>Aquí no se paga nada.</strong> Esto es la lista: si sois suficientes, se fabrica.</p>
+      <div class="portada-acciones">
+        <a class="boton solido" href="#reservar">Apuntarme a la lista</a>
+        <a class="boton hueco" href="#como">Cómo se hace</a>
+      </div>
+    </div>
+    <div class="lamina-portada">
+      <img src="relieve.png" width="820" height="820" alt="Mapa en relieve de una zona de montaña: el puerto trazado en naranja sube con curvas de herradura, con una carretera por el valle y una senda hacia el collado">
+      <div class="pie-lamina">Relieve sombreado · el trazado sigue la carretera</div>
+    </div>
+  </section>
+
+  <section id="productos">
+    <p class="rotulo-seccion">Lo que se va a fabricar</p>
+    <h2>Tres cosas que no existen en ningún otro sitio</h2>
+    <p class="intro-seccion">Las tres salen de algo que ya tienes dentro de la app: una rodada
+    grabada, un club al que perteneces, un carnet que se ha ido llenando solo.</p>
+
+    <div class="rejilla">
+
+      <article class="producto destacado">
+        <div class="lamina">
+          <img src="relieve.png" width="820" height="820" alt="Placa en relieve con el recorrido marcado sobre el terreno">
+          <div class="etiquetas"><span class="etq nuevo">Nuevo</span><span class="etq">Bajo pedido</span></div>
+        </div>
+        <div class="cuerpo">
+          <h3>Tu rodada, en relieve</h3>
+          <p>El terreno real por el que pasaste, impreso en tres dimensiones: los puertos que
+          subiste tienen altura, los valles se hunden y tu trazado va marcado por encima siguiendo
+          la carretera. Se hace <strong>a partir de una rodada tuya ya grabada</strong>, con el
+          perfil de alturas que la app guarda mientras ruedas.</p>
+          <p>Debajo, una placa con el nombre de la ruta, los kilómetros, el desnivel y la fecha.
+          Y un QR que abre esa misma rodada en Motraza.</p>
+          <div class="fichas">
+            <span class="ficha">Impresión 3D</span>
+            <span class="ficha">~18 cm</span>
+            <span class="ficha">Relieve real</span>
+            <span class="ficha">Placa grabada</span>
+          </div>
+          <div class="precio"><b>39 €</b><span>orientativo</span></div>
+          <button type="button" class="btn-producto" data-elige="ruta-3d">La quiero</button>
+        </div>
+      </article>
+
+      <article class="producto">
+        <div class="lamina">
+          <svg viewBox="0 0 200 150" role="img" aria-label="Parche bordado circular con las iniciales del club">
+            <rect width="200" height="150" fill="#171a1d"/>
+            <circle cx="100" cy="75" r="46" fill="#08090a" stroke="#ff6600" stroke-width="5"/>
+            <circle cx="100" cy="75" r="38" fill="none" stroke="#343a41" stroke-width="1.5" stroke-dasharray="3 3"/>
+            <text x="100" y="72" text-anchor="middle" fill="#f1efec" font-family="Archivo,sans-serif" font-weight="800" font-size="24" letter-spacing="1">MC</text>
+            <text x="100" y="90" text-anchor="middle" fill="#ff6600" font-family="IBM Plex Mono,monospace" font-size="8" letter-spacing="2">MOTRAZA</text>
+          </svg>
+          <div class="etiquetas"><span class="etq">Bordado</span></div>
+        </div>
+        <div class="cuerpo">
+          <h3>El parche del club</h3>
+          <p>Bordado sobre tela, con el escudo que ya tiene tu club dentro de la app. Para el
+          chaleco, la mochila o donde se vea.</p>
+          <div class="fichas">
+            <span class="ficha">~9 cm</span><span class="ficha">Velcro o cosido</span>
+          </div>
+          <div class="precio"><b>15 €</b><span>orientativo</span></div>
+          <button type="button" class="btn-producto" data-elige="parche-club">Lo quiero</button>
+        </div>
+      </article>
+
+      <article class="producto">
+        <div class="lamina">
+          <svg viewBox="0 0 200 150" role="img" aria-label="Carnet de rider en formato tarjeta">
+            <rect width="200" height="150" fill="#171a1d"/>
+            <rect x="32" y="30" width="136" height="88" rx="8" fill="#08090a" stroke="#343a41" stroke-width="1.5"/>
+            <rect x="32" y="30" width="136" height="16" rx="8" fill="#ff6600"/>
+            <rect x="32" y="38" width="136" height="8" fill="#ff6600"/>
+            <rect x="42" y="56" width="30" height="38" rx="3" fill="#25292e" stroke="#343a41"/>
+            <circle cx="57" cy="68" r="7" fill="#6d747b"/>
+            <path d="M46 90c2-8 20-8 22 0z" fill="#6d747b"/>
+            <rect x="80" y="58" width="52" height="5" rx="2.5" fill="#f1efec"/>
+            <rect x="80" y="69" width="38" height="4" rx="2" fill="#6d747b"/>
+            <rect x="80" y="78" width="46" height="4" rx="2" fill="#6d747b"/>
+            <rect x="140" y="74" width="20" height="20" rx="2" fill="#f1efec"/>
+            <rect x="143" y="77" width="6" height="6" fill="#08090a"/>
+            <rect x="151" y="77" width="6" height="6" fill="#08090a"/>
+            <rect x="143" y="85" width="6" height="6" fill="#08090a"/>
+            <rect x="42" y="102" width="116" height="6" rx="1" fill="#25292e"/>
+          </svg>
+          <div class="etiquetas"><span class="etq">PVC rígido</span></div>
+        </div>
+        <div class="cuerpo">
+          <h3>Tu carnet en físico</h3>
+          <p>El mismo carnet que llevas en la app, en tarjeta rígida: tu rango, tus kilómetros y el
+          QR de tu club, que sigue funcionando impreso.</p>
+          <div class="fichas">
+            <span class="ficha">85 × 54 mm</span><span class="ficha">QR que se lee</span>
+          </div>
+          <div class="precio"><b>8 €</b><span>orientativo</span></div>
+          <button type="button" class="btn-producto" data-elige="carnet-fisico">Lo quiero</button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section id="como">
+    <p class="rotulo-seccion">La rodada en relieve</p>
+    <h2>De una tarde en la carretera a una pieza en la mano</h2>
+    <p class="intro-seccion">No se dibuja a mano ni se aproxima: sale del recorrido que grabó tu
+    teléfono y de la altura de cada punto por el que pasaste.</p>
+
+    <div class="pasos">
+      <div class="paso">
+        <h3>La rodada que ya tienes</h3>
+        <p>Eliges una de tus rutas completadas dentro de la app. De ahí salen el trazado, los
+        kilómetros, el desnivel y la fecha — todo lo que Motraza guardó mientras rodabas.</p>
+      </div>
+      <div class="paso">
+        <h3>El terreno alrededor</h3>
+        <p>Sobre ese recorrido se levanta el relieve de la zona: los puertos con su altura real,
+        los valles hundidos y los embalses marcados. La montaña que subiste se ve que es una
+        montaña.</p>
+      </div>
+      <div class="paso">
+        <h3>La pieza, impresa</h3>
+        <p>Se imprime en 3D bajo pedido, con tu trazado resaltado por encima del terreno y una
+        placa grabada al pie. No hay stock: cada una se fabrica cuando se pide.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="rotulo-seccion">Formatos</p>
+    <h2>Tres formas para la misma carretera</h2>
+    <p class="intro-seccion">La misma rodada cambia bastante según cómo se recorte el terreno a su
+    alrededor. Si te apuntas puedes decir cuál prefieres, y sirve para saber cuál fabricar primero.</p>
+
+    <div class="formas">
+      <div class="forma">
+        <svg viewBox="0 0 100 80" role="img" aria-label="Formato placa rectangular">
+          <rect x="8" y="10" width="84" height="60" rx="3" fill="#1e2226" stroke="#343a41"/>
+          <path d="M18 56c10-6 14-18 26-20s20 8 32 2" fill="none" stroke="#ff6600" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <h3>Placa</h3>
+        <p>Rectangular, con la placa grabada al pie. La que mejor se apoya en una balda.</p>
+      </div>
+      <div class="forma">
+        <svg viewBox="0 0 100 80" role="img" aria-label="Formato hexagonal">
+          <path d="M50 8 88 28v34L50 72 12 62V28z" fill="#1e2226" stroke="#343a41"/>
+          <path d="M24 54c10-6 14-16 26-18s18 8 28 3" fill="none" stroke="#ff6600" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <h3>Hexágono</h3>
+        <p>Se pueden juntar varios: una rodada al lado de otra, como un panal en la pared.</p>
+      </div>
+      <div class="forma">
+        <svg viewBox="0 0 100 80" role="img" aria-label="Formato redondo">
+          <circle cx="50" cy="40" r="32" fill="#1e2226" stroke="#343a41"/>
+          <path d="M26 52c10-6 14-16 25-18s17 8 25 4" fill="none" stroke="#ff6600" stroke-width="3" stroke-linecap="round"/>
+        </svg>
+        <h3>Redonda</h3>
+        <p>Sin esquinas y con el trazado centrado. La más limpia para una ruta circular.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <p class="rotulo-seccion">Sin letra pequeña</p>
+    <h2>Por qué esto todavía no se vende</h2>
+    <div class="honesto">
+      <div>
+        <h3>Porque primero hay que contar</h3>
+        <p>Fabricar bajo demanda tiene un mínimo, y montar el cobro en condiciones cuesta dinero
+        antes de ingresar el primero. Antes de gastar nada se cuenta cuánta gente lo quiere.</p>
+      </div>
+      <div>
+        <h3>Apuntarse no te compromete</h3>
+        <p>No se cobra, no se pide tarjeta y no hay contrato. Cuando exista de verdad recibes un
+        aviso y decides entonces, con el precio final delante.</p>
+      </div>
+      <div>
+        <h3>Y el precio puede moverse</h3>
+        <p>Los de arriba son orientativos: salen del material, de las horas de impresora y del
+        envío. El definitivo se sabrá con el número de unidades y se dirá antes de cobrar nada.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="reservar">
+    <p class="rotulo-seccion">Lista de espera</p>
+    <h2>Apúntate y te avisamos</h2>
+    <p class="intro-seccion">Un correo y ya está. Sirve para saber cuántos sois y para escribirte
+    cuando se pueda pedir de verdad.</p>
+
+    <form id="formulario" novalidate>
+      <fieldset>
+        <legend>Qué quieres</legend>
+        <div class="opciones">
+          <label class="opcion"><input type="radio" name="producto" value="ruta-3d" checked><span>Mi rodada en relieve</span></label>
+          <label class="opcion"><input type="radio" name="producto" value="parche-club"><span>El parche del club</span></label>
+          <label class="opcion"><input type="radio" name="producto" value="carnet-fisico"><span>El carnet en físico</span></label>
+        </div>
+      </fieldset>
+
+      <fieldset id="campo-forma">
+        <legend>Qué formato prefieres <span class="suave" style="text-transform:none;letter-spacing:0">(opcional)</span></legend>
+        <div class="opciones" style="grid-template-columns:repeat(auto-fit,minmax(8rem,1fr))">
+          <label class="opcion"><input type="radio" name="variante" value="placa"><span>Placa</span></label>
+          <label class="opcion"><input type="radio" name="variante" value="hexagono"><span>Hexágono</span></label>
+          <label class="opcion"><input type="radio" name="variante" value="redonda"><span>Redonda</span></label>
+        </div>
+      </fieldset>
+
+      <div id="aviso-ruta" class="ruta-elegida oculto">
+        Ruta elegida desde la app: <b id="ruta-corta"></b>
+      </div>
+      <p class="pista oculto" id="pista-sin-ruta">
+        Aún no has elegido qué rodada imprimir, y no pasa nada: eso se hace desde la app, en el
+        detalle de una ruta que hayas completado. Apúntate ahora y lo eliges cuando exista.
+      </p>
+
+      <fieldset id="campo-club">
+        <label class="etiqueta" for="codigo">Código de tu club</label>
+        <input type="text" id="codigo" name="codigo" maxlength="6" autocomplete="off" spellcheck="false" placeholder="ABC234" aria-describedby="pista-codigo">
+        <p class="pista" id="pista-codigo">Seis letras y números. Está en la pantalla de tu club, dentro de la app.</p>
+      </fieldset>
+
+      <fieldset>
+        <label class="etiqueta" for="email">Tu correo</label>
+        <input type="email" id="email" name="email" required autocomplete="email" placeholder="tu@correo.com">
+      </fieldset>
+
+      <fieldset>
+        <label class="etiqueta" for="nombre">Tu nombre <span class="suave">(opcional)</span></label>
+        <input type="text" id="nombre" name="nombre" maxlength="80" autocomplete="name" placeholder="Como te llaman">
+      </fieldset>
+
+      <fieldset>
+        <label class="etiqueta" for="comentario">Algo que quieras decir <span class="suave">(opcional)</span></label>
+        <textarea id="comentario" name="comentario" maxlength="500" placeholder="Qué ruta te gustaría imprimir, un tamaño, una idea…"></textarea>
+      </fieldset>
+
+      <div class="trampa" aria-hidden="true">
+        <label for="apodo">No rellenes esto</label>
+        <input type="text" id="apodo" name="apodo" tabindex="-1" autocomplete="off">
+      </div>
+
+      <p class="recado" id="recado" role="status" hidden></p>
+      <button type="submit" id="enviar">Apuntarme</button>
+      <p class="pista">Guardamos tu correo solo para avisarte de esto. Ni publicidad, ni se cede a nadie.</p>
+    </form>
+  </section>
+
+</div>
+</main>
+
+<footer>
+  <div class="envoltura legal">
+    <div>
+      <h3>Sobre tus datos</h3>
+      <p>Guardamos <strong>el correo que escribas</strong>, y el nombre, el código de club o la
+      ruta elegida si los rellenas, con un único fin: avisarte cuando el producto exista. No se
+      usan para publicidad, no se ceden a terceros y no alimentan ningún perfil. Se guardan en
+      Supabase, el mismo servicio que usa la aplicación.</p>
+      <p>Guardar el identificador de una ruta <strong>no da acceso a su recorrido</strong>: el
+      trazado sigue siendo tuyo y protegido dentro de la app. El día que haya que imprimirlo se te
+      pedirá permiso expreso.</p>
+      <p>Puedes pedir que se borre lo tuyo escribiendo a
+      <span class="rellenar">[CORREO DE CONTACTO]</span> y se borra, sin preguntar por qué.
+      Responsable del tratamiento: <span class="rellenar">[NOMBRE O RAZÓN SOCIAL]</span>.</p>
+    </div>
+    <div>
+      <h3>Y sobre la tienda</h3>
+      <p>Esta página <strong>no es una tienda todavía</strong>: no vende, no cobra y no acepta
+      pagos. Apuntarse no crea ningún contrato ni obligación de compra para ninguna de las dos
+      partes.</p>
+      <p>Cuando haya venta de verdad, esta página cambiará e incluirá las condiciones, los gastos
+      de envío y el derecho de desistimiento que la ley exige.</p>
+      <p>Las imágenes son ilustraciones del producto, no fotografías de una pieza fabricada.</p>
+      <p style="margin-top:2rem">Motraza · hecho en España</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+
+  var API = 'https://wyyofdhowkvjupwhaxdc.supabase.co/rest/v1/reservas_tienda';
+  var CLAVE = 'sb_publishable_2AyhrAa5Sy_LyrL67GYimw_73XNeD5N';
+  var UUID = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
+  var CODIGO = /^[ABCDEFGHJKMNPQRSTUVWXYZ23456789]{6}$/;
+
+  var form = document.getElementById('formulario');
+  var recado = document.getElementById('recado');
+  var enviar = document.getElementById('enviar');
+  var campoClub = document.getElementById('campo-club');
+  var campoForma = document.getElementById('campo-forma');
+  var avisoRuta = document.getElementById('aviso-ruta');
+  var pistaSinRuta = document.getElementById('pista-sin-ruta');
+  var codigo = document.getElementById('codigo');
+
+  // La app puede abrir esta página ya apuntando a un producto:
+  //   ?p=ruta-3d&r=<uuid de la ruta>&de=app
+  //   ?p=parche-club&c=ABC234&de=app
+  //
+  // Lo que viaja en la dirección está elegido, no es lo que había a mano. El
+  // código del club ya es público —va impreso en el QR del carnet— y el id de
+  // una ruta es un identificador opaco que NO da acceso a su recorrido, porque
+  // el trazado sigue detrás de las reglas de acceso de la base de datos.
+  //
+  // Lo que NO viaja nunca es quién eres: ni nombre, ni id de rider, ni el
+  // nombre de la ruta, que lo escribe el usuario y puede decir "casa - trabajo".
+  // Una URL termina en el historial y en los registros de todo el que la vea
+  // pasar, y ahí no se pone nada de nadie.
+  var params = new URLSearchParams(location.search);
+  var origen = params.get('de') === 'app' ? 'app' : 'web';
+  var rutaId = (params.get('r') || '').trim();
+  if (!UUID.test(rutaId)) rutaId = '';
+
+  var pedido = params.get('p');
+  if (pedido) {
+    var radio = form.querySelector('input[name=producto][value="' + CSS.escape(pedido) + '"]');
+    if (radio) radio.checked = true;
+  }
+  var club = (params.get('c') || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
+  if (CODIGO.test(club)) codigo.value = club;
+
+  function productoElegido() {
+    var m = form.querySelector('input[name=producto]:checked');
+    return m ? m.value : 'ruta-3d';
+  }
+
+  // Cada producto pide cosas distintas, y la base de datos lo exige: un carnet
+  // con código de club o un parche con ruta se rechazan. Mejor no enseñar el
+  // campo que dejar que el servidor conteste con un error que no dice nada.
+  function ajustar() {
+    var p = productoElegido();
+    campoClub.classList.toggle('oculto', p !== 'parche-club');
+    codigo.required = p === 'parche-club';
+    campoForma.classList.toggle('oculto', p !== 'ruta-3d');
+    avisoRuta.classList.toggle('oculto', !(p === 'ruta-3d' && rutaId));
+    pistaSinRuta.classList.toggle('oculto', !(p === 'ruta-3d' && !rutaId));
+  }
+  form.querySelectorAll('input[name=producto]').forEach(function (r) {
+    r.addEventListener('change', ajustar);
+  });
+
+  if (rutaId) {
+    // Solo el principio del identificador: basta para que reconozca que ha
+    // llegado con una ruta puesta, y no llena la pantalla de jeroglífico.
+    document.getElementById('ruta-corta').textContent = rutaId.slice(0, 8);
+  }
+  ajustar();
+
+  document.querySelectorAll('[data-elige]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var v = b.getAttribute('data-elige');
+      var r = form.querySelector('input[name=producto][value="' + v + '"]');
+      if (r) { r.checked = true; ajustar(); }
+      document.getElementById('reservar').scrollIntoView({ block: 'start' });
+      (v === 'parche-club' ? codigo : document.getElementById('email')).focus({ preventScroll: true });
+    });
+  });
+
+  codigo.addEventListener('input', function () {
+    codigo.value = codigo.value.toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 6);
+  });
+
+  function decir(texto, tipo) {
+    recado.textContent = texto;
+    recado.setAttribute('data-tipo', tipo);
+    recado.hidden = false;
+  }
+
+  form.addEventListener('submit', function (e) {
+    e.preventDefault();
+    recado.hidden = true;
+
+    // Trampa para robots: invisible para una persona, así que si viene llena no
+    // es una persona. Se finge que ha ido bien y no se escribe nada.
+    if (document.getElementById('apodo').value) {
+      decir('Apuntado. Te avisamos cuando exista.', 'ok');
+      return;
+    }
+
+    var producto = productoElegido();
+    var email = document.getElementById('email').value.trim();
+    var nombre = document.getElementById('nombre').value.trim();
+    var comentario = document.getElementById('comentario').value.trim();
+    var cod = codigo.value.trim();
+    var varMarcada = form.querySelector('input[name=variante]:checked');
+
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) {
+      decir('Ese correo no parece un correo. Míralo y vuelve a darle.', 'error');
+      document.getElementById('email').focus();
+      return;
+    }
+    if (producto === 'parche-club' && !CODIGO.test(cod)) {
+      decir('Falta el código del club: son seis letras y números, y lo tienes en la pantalla de tu club.', 'error');
+      codigo.focus();
+      return;
+    }
+
+    enviar.disabled = true;
+    enviar.textContent = 'Apuntando…';
+
+    fetch(API, {
+      method: 'POST',
+      headers: {
+        'apikey': CLAVE,
+        'Authorization': 'Bearer ' + CLAVE,
+        'Content-Type': 'application/json',
+        'Prefer': 'return=minimal'
+      },
+      body: JSON.stringify({
+        producto: producto,
+        email: email,
+        nombre: nombre || null,
+        comentario: comentario || null,
+        codigo_club: producto === 'parche-club' ? cod : null,
+        ruta_id: producto === 'ruta-3d' && rutaId ? rutaId : null,
+        variante: producto === 'ruta-3d' && varMarcada ? varMarcada.value : null,
+        origen: origen
+      })
+    }).then(function (r) {
+      if (r.ok) {
+        form.querySelectorAll('input,textarea,button').forEach(function (c) { c.disabled = true; });
+        decir('Apuntado. Te escribimos a ' + email + ' cuando se pueda pedir.', 'ok');
+        return;
+      }
+      // 409 es la clave única: ya estaba en la lista. No es un fallo suyo y no
+      // tiene sentido enseñárselo como si lo fuera.
+      if (r.status === 409) {
+        decir('Ya estabas apuntado a esto con ese correo. No hace falta nada más.', 'ok');
+        return;
+      }
+      throw new Error('HTTP ' + r.status);
+    }).catch(function () {
+      decir('No se ha podido guardar. Puede ser la cobertura: inténtalo otra vez en un momento.', 'error');
+    }).finally(function () {
+      if (recado.getAttribute('data-tipo') !== 'ok') {
+        enviar.disabled = false;
+        enviar.textContent = 'Apuntarme';
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>
